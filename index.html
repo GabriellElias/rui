@@ -262,6 +262,35 @@
             outline: none;
         }
 
+        /* Estilo específico para input type="color" */
+        .modal form input[type="color"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 50px; /* Largura menor para o seletor de cor */
+            height: 30px; /* Altura menor */
+            padding: 0;
+            border: none;
+            border-radius: 5px; /* Pequeno arredondamento */
+            cursor: pointer;
+            vertical-align: middle; /* Alinha com o label */
+            margin-bottom: 20px; /* Mantém o espaçamento */
+        }
+        .modal form input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+        .modal form input[type="color"]::-webkit-color-swatch {
+            border: none;
+            border-radius: 5px;
+        }
+        .modal form input[type="color"]::-moz-color-swatch-wrapper {
+            padding: 0;
+        }
+        .modal form input[type="color"]::-moz-color-swatch {
+            border: none;
+            border-radius: 5px;
+        }
+
         .modal form textarea {
             resize: vertical;
             min-height: 100px;
@@ -491,8 +520,11 @@
                     <label for="blockFunction">Função:</label>
                     <textarea id="blockFunction" required></textarea>
 
-                    <label for="blockColor">Cor (CSS válido, ex: #4a90e2, green, rgb(0,0,0)):</label>
-                    <input type="text" id="blockColor" required>
+                    <label for="blockColor">Cor do Bloco:</label>
+                    <input type="color" id="blockColor" value="#4a90e2" required> <!-- Seletor de cor -->
+
+                    <label for="blockLink">Link (opcional):</label>
+                    <input type="text" id="blockLink" placeholder="https://exemplo.com">
 
                     <button type="submit">Adicionar Bloco</button>
                     <p id="addBlockMessage" class="error-message"></p>
@@ -519,6 +551,7 @@
             const blockNameInput = document.getElementById('blockName');
             const blockFunctionInput = document.getElementById('blockFunction');
             const blockColorInput = document.getElementById('blockColor');
+            const blockLinkInput = document.getElementById('blockLink'); // Novo input para o link
             const addBlockMessage = document.getElementById('addBlockMessage');
             const logoutButton = document.getElementById('logoutButton');
 
@@ -687,11 +720,12 @@
                 e.preventDefault();
                 const name = blockNameInput.value.trim();
                 const func = blockFunctionInput.value.trim();
-                const color = blockColorInput.value.trim();
+                const color = blockColorInput.value; // Pega o valor do seletor de cor
+                const link = blockLinkInput.value.trim(); // Pega o valor do link
 
                 if (name && func && color) {
                     // Blocos adicionados dinamicamente são visíveis para todos nesta sessão
-                    const newBlock = { name: name, function: func, color: color, visibility: 'all' };
+                    const newBlock = { name: name, function: func, color: color, link: link || null, visibility: 'all' }; // Adiciona o link ou null
                     dynamicallyAddedBlocks.push(newBlock); // Adiciona ao array dinâmico
                     renderBlocks(); // Re-renderiza para incluir o novo bloco
                     addBlockForm.reset(); // Limpa os campos do formulário
@@ -700,7 +734,7 @@
                     unsavedChanges = false; // Reinicia o sinalizador de alterações não salvas
                     // Em um aplicativo real, você enviaria esses dados 'newBlock' para seu servidor/banco de dados aqui.
                 } else {
-                    addBlockMessage.textContent = 'Por favor, preencha todos os campos para o novo bloco.';
+                    addBlockMessage.textContent = 'Por favor, preencha o nome, função e cor para o novo bloco.';
                     addBlockMessage.style.color = 'var(--cor-erro)';
                 }
                 setTimeout(() => addBlockMessage.textContent = '', 3000); // Limpa a mensagem após 3 segundos
