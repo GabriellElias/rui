@@ -355,7 +355,7 @@
             <div id="pdf-page-1">
                 <!-- Logo and Main Title -->
                 <div class="logo-container">
-                    <img src="slogan espaço Comemore jpeg.jpg-7e929b14-c6d1-4536-ba8a-cafe379181ba" alt="Logo Buffet Espaço Comemore" onerror="this.onerror=null;this.src='https://placehold.co/250x100/A0A0A0/FFFFFF?text=Logo+Aqui';">
+                    <img src="slogan espaço Comemore jpeg.jpg" alt="Logo Buffet Espaço Comemore" onerror="this.onerror=null;this.src='https://placehold.co/250x100/A0A0A0/FFFFFF?text=Logo+Aqui';">
                 </div>
                 <h1>CONTRATO DE PRESTAÇÃO DE SERVIÇO DE ESPAÇO PARA EVENTOS PARTICULARES</h1>
 
@@ -551,8 +551,7 @@
                     <p>O Espaço deve ser utilizado nas horas definidas neste contrato e após este horário deverá entregar-se imediatamente as chaves e controles em perfeito estado ao CONTRATADO ou a pessoa indicada pelo mesmo.</p>
                     <p>O Espaço deve ser utilizado conforme acordado, com a utilização da piscina (<input type="checkbox">) sim ou (<input type="checkbox">) não, cabendo colocar a capa na piscina(<input type="checkbox">) sim ou (<input type="checkbox">) não. Deve-se cumprir o que foi acordado e zelar pelo bom uso do mesmo.</p>
                     <p>- O Espaço deve ser utilizado pelo CONTRATANTE, sendo o espaço individual e intransferível, não podendo o mesmo ser utilizado para festas coletivas por pessoa pagantes.</p>
-                    <p>O Espaço deve ser entregue diretamente ao CONTRATANTE, cabendo a este cumprir o horário estabelecido para buscar as chaves do espaço, que se dará na data <input type="date" style="width: auto; display: inline-block;">, às <input type="time" style="width: auto; display: inline- FIM DA SELEÇÃO
-block;"> horas.</p>
+                    <p>O Espaço deve ser entregue diretamente ao CONTRATANTE, cabendo a este cumprir o horário estabelecido para buscar as chaves do espaço, que se dará na data <input type="date" style="width: auto; display: inline-block;">, às <input type="time" style="width: auto; display: inline-block;"> horas.</p>
                     <h3>O ESPAÇO SERÁ UTILIZADO:</h3>
                     <p>Com a assinatura deste contrato, objeto do presente instrumento, o cliente terá direito ao uso do espaço completo para festas, contendo <span class="read-only-field" style="display: inline-block; padding: 5px 10px;">10</span> mesas, um freezer, fogão industrial, com gás(<input type="checkbox">) ou sem gás (<input type="checkbox">), utilização da piscina (<input type="checkbox">) sim ou (<input type="checkbox">) não, cabendo colocar a capa na piscina (<input type="checkbox">) sim ou (<input type="checkbox">) não.</p>
                     <p>Será permitido ser servido comida e bebida no espaço, não sendo permitido de forma alguma a sua utilização no interior da piscina, e qualquer tipo de fogos auditivos e pirotécnicos no espaço, ou qualquer tipo de fogo que possa causar algum risco às pessoas que estejam no ambiente ou até mesmo danos ao ambiente.</p>
@@ -629,6 +628,10 @@ block;"> horas.</p>
                                 </label>
                             </div>
                         </div>
+                        
+                        <!-- Imagem da Assinatura do Contratado -->
+                        <img src="https://placehold.co/300x80/FFFFFF/000000?text=Assinatura+Contratado" alt="Assinatura do Contratado" style="display: block; margin: -20px auto 0; max-height: 80px;" onerror="this.onerror=null;this.src='https://placehold.co/300x80/EFEFEF/333333?text=Assinatura+Indisponível';">
+                        
                         <div class="signature-line"></div>
                         <p>CONTRATADO</p>
                         <p class="disclaimer">Rua Veneza. ESQ. Rua Isaura Parente, 100. (Rua da pista de teste do DETRAN). Fone/Whatsapp: (68) 99921.7686 – espacocomemoreacre@gmail.com</p>
@@ -891,13 +894,13 @@ block;"> horas.</p>
                             isValidTime = false;
                         }
 
-                        if (inicioMin < LIMIT_START_NOTURNO || effectiveFimMin > maxAllowedEndTimeMinutes) {
+                        if (isValidTime && (inicioMin < LIMIT_START_NOTURNO || effectiveFimMin > maxAllowedEndTimeMinutes)) {
                              horarioErrorSpan.textContent = `ERRO: Para eventos noturnos, o horário permitido é de 17:00h até ${maxAllowedEndTimeString}.`;
                             isValidTime = false;
-                        } else if (effectiveFimMin <= inicioMin) {
+                        } else if (isValidTime && effectiveFimMin <= inicioMin) {
                             horarioErrorSpan.textContent = 'ERRO: O horário de término deve ser posterior ao horário de início.';
                             isValidTime = false;
-                        } else {
+                        } else if(isValidTime) {
                             horarioInfoSpan.textContent = 'Horário noturno válido. Som ambiente após 22:00h.';
                         }
                     }
@@ -1055,7 +1058,7 @@ block;"> horas.</p>
                     }
                     
                     // Format date for PDF filename
-                    const dataUtilizacao = dataUtilizacaoInput.value; // Assume YYYY-MM-DD
+                    const dataUtilizacao = dataUtilizacaoInput.value; // Assume format YYYY-MM-DD
                     let formattedDate = '';
                     if (dataUtilizacao) {
                         const dateParts = dataUtilizacao.split('-'); // ['YYYY', 'MM', 'DD']
