@@ -473,7 +473,7 @@
                             <div class="read-only-field">10 (fixas)</div>
                         </div>
                         <div class="field">
-                            <label for="mesas_extras">CADEIRAS EXTRAS (R$10 por cadeira):</label>
+                            <label for="mesas_extras">MESAS EXTRAS (R$10 por MESA):</label>
                             <input type="number" id="mesas_extras" name="mesas_extras" min="0" value="0">
                             <span id="valor_mesas_extras_display" class="info-message"></span>
                         </div>
@@ -630,7 +630,7 @@
                         </div>
                         
                         <!-- Imagem da Assinatura do Contratado -->
-                        <img src="https://placehold.co/300x80/FFFFFF/000000?text=Assinatura+Contratado" alt="Assinatura do Contratado" style="display: block; margin: -20px auto 0; max-height: 80px;" onerror="this.onerror=null;this.src='https://placehold.co/300x80/EFEFEF/333333?text=Assinatura+Indisponível';">
+                        <img src="" alt="Assinatura do Contratado" style="display: block; margin: -20px auto 0; max-height: 80px;" onerror="this.onerror=null;this.src='https://placehold.co/300x80/EFEFEF/333333?text=Assinatura+Indisponível';">
                         
                         <div class="signature-line"></div>
                         <p>CONTRATADO</p>
@@ -817,7 +817,7 @@
 
                 const mesasExtras = parseInt(mesasExtrasInput.value) || 0;
                 const valorMesasExtras = mesasExtras * VALOR_CADEIRA_EXTRA;
-                valorMesasExtrasDisplay.textContent = mesasExtras > 0 ? `(${formatCurrency(valorMesasExtras)} por ${mesasExtras} cadeiras extras)` : '';
+                valorMesasExtrasDisplay.textContent = mesasExtras > 0 ? `(${formatCurrency(valorMesasExtras)} por ${mesasExtras} mesas extras)` : '';
                 total += valorMesasExtras;
 
                 if (utilizacaoPiscinaSim.checked) {
