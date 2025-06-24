@@ -470,10 +470,10 @@
                     <div class="field-group">
                         <div class="field">
                             <label>QUANTIDADE DE MESAS INCLUSAS:</label>
-                            <div class="read-only-field">10 (fixas)</div>
+                            <div class="read-only-field">15 (fixas)</div>
                         </div>
                         <div class="field">
-                            <label for="mesas_extras">MESAS EXTRAS (R$10 por MESA):</label>
+                            <label for="mesas_extras">MESAS EXTRAS (R$10 por mesa):</label>
                             <input type="number" id="mesas_extras" name="mesas_extras" min="0" value="0">
                             <span id="valor_mesas_extras_display" class="info-message"></span>
                         </div>
@@ -553,7 +553,7 @@
                     <p>- O Espaço deve ser utilizado pelo CONTRATANTE, sendo o espaço individual e intransferível, não podendo o mesmo ser utilizado para festas coletivas por pessoa pagantes.</p>
                     <p>O Espaço deve ser entregue diretamente ao CONTRATANTE, cabendo a este cumprir o horário estabelecido para buscar as chaves do espaço, que se dará na data <input type="date" style="width: auto; display: inline-block;">, às <input type="time" style="width: auto; display: inline-block;"> horas.</p>
                     <h3>O ESPAÇO SERÁ UTILIZADO:</h3>
-                    <p>Com a assinatura deste contrato, objeto do presente instrumento, o cliente terá direito ao uso do espaço completo para festas, contendo <span class="read-only-field" style="display: inline-block; padding: 5px 10px;">10</span> mesas, um freezer, fogão industrial, com gás(<input type="checkbox">) ou sem gás (<input type="checkbox">), utilização da piscina (<input type="checkbox">) sim ou (<input type="checkbox">) não, cabendo colocar a capa na piscina (<input type="checkbox">) sim ou (<input type="checkbox">) não.</p>
+                    <p>Com a assinatura deste contrato, objeto do presente instrumento, o cliente terá direito ao uso do espaço completo para festas, contendo <span class="read-only-field" style="display: inline-block; padding: 5px 10px;">15</span> mesas, um freezer, fogão industrial, com gás(<input type="checkbox">) ou sem gás (<input type="checkbox">), utilização da piscina (<input type="checkbox">) sim ou (<input type="checkbox">) não, cabendo colocar a capa na piscina (<input type="checkbox">) sim ou (<input type="checkbox">) não.</p>
                     <p>Será permitido ser servido comida e bebida no espaço, não sendo permitido de forma alguma a sua utilização no interior da piscina, e qualquer tipo de fogos auditivos e pirotécnicos no espaço, ou qualquer tipo de fogo que possa causar algum risco às pessoas que estejam no ambiente ou até mesmo danos ao ambiente.</p>
                     <p>Será permitido o uso de decoração, desde que não cause estragos nas paredes e estrutura, devendo ser totalmente retirada no final do evento.</p>
                     <p>Qualquer dano causado deverá ser ressarcido.</p>
@@ -630,7 +630,7 @@
                         </div>
                         
                         <!-- Imagem da Assinatura do Contratado -->
-                        <img src="Assinatura Digital LEANDRO RUY .jpg" alt="Assinatura do Contratado" style="display: block; margin: -20px auto 0; max-height: 80px;" onerror="this.onerror=null;this.src='https://placehold.co/300x80/EFEFEF/333333?text=Assinatura+Indisponível';">
+                        <img src="Assinatura Digital LEANDRO RUY .jpg" alt="Assinatura do Contratado" style="display: block; margin: -35px auto 0; max-height: 100px;" onerror="this.onerror=null;this.src='https://placehold.co/350x100/EFEFEF/333333?text=Assinatura+Indisponível';">
                         
                         <div class="signature-line"></div>
                         <p>CONTRATADO</p>
@@ -705,7 +705,7 @@
             const pdfErrorMessage = document.getElementById('pdfErrorMessage');
             const successMessage = document.getElementById('successMessage');
 
-            const VALOR_CADEIRA_EXTRA = 10;
+            const VALOR_MESA_EXTRA = 10;
             const VALOR_PULA_PULA = 90;
             const VALOR_PISCINA_BOLINHA = 90;
             const VALOR_ADICIONAL_PISCINA_FIXO = 150;
@@ -816,7 +816,7 @@
                 total += valorEspaco;
 
                 const mesasExtras = parseInt(mesasExtrasInput.value) || 0;
-                const valorMesasExtras = mesasExtras * VALOR_CADEIRA_EXTRA;
+                const valorMesasExtras = mesasExtras * VALOR_MESA_EXTRA;
                 valorMesasExtrasDisplay.textContent = mesasExtras > 0 ? `(${formatCurrency(valorMesasExtras)} por ${mesasExtras} mesas extras)` : '';
                 total += valorMesasExtras;
 
