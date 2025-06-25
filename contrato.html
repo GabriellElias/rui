@@ -55,6 +55,1054 @@
             background-color: #fdfdfd;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
+            page-break-inside: avoid; /* Tenta evitar quebras de página dentro de uma seção */
+        }
+        .section p {
+            margin-bottom: 10px;
+        }
+        .field-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        .field {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+            display: flex;
+            align-items: center;
+        }
+        input[type="text"],
+        input[type="date"],
+        input[type="time"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%; /* Garante que ocupe a largura total disponível */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        input[type="time"]:focus,
+        input[type="number"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .radio-group, .checkbox-group {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap; /* Permite que os itens quebrem linha */
+        }
+        .radio-group label, .checkbox-group label {
+            margin-right: 20px;
+            margin-bottom: 0;
+            font-weight: normal;
+            cursor: pointer;
+        }
+        .radio-group input[type="radio"], .checkbox-group input[type="checkbox"] {
+            margin-right: 5px;
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+        .price {
+            font-weight: 700;
+            color: #27ae60;
+            font-size: 1.1em;
+        }
+        .total-value {
+            font-size: 1.6em;
+            color: #e67e22;
+            font-weight: 700;
+            text-align: right;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+            margin-top: 20px;
+        }
+        .signature-area {
+            margin-top: 60px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .signature-line {
+            display: inline-block;
+            width: 40%;
+            border-bottom: 1px solid #000;
+            margin: 0 10px 40px 10px;
+            padding-top: 30px;
+            vertical-align: top;
+        }
+        .disclaimer {
+            font-size: 0.85em;
+            color: #7f8c8d;
+            margin-top: 15px;
+            line-height: 1.5;
+        }
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.85em;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+        .info-message {
+            color: #3498db;
+            font-size: 0.85em;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+        .read-only-field {
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        /* Specific alignment for time inputs */
+        .time-inputs {
+            display: flex;
+            flex-wrap: wrap; /* Adiciona quebra de linha para inputs de hora em telas pequenas */
+            align-items: center;
+            gap: 10px;
+        }
+        .time-inputs input {
+            width: calc(50% - 15px); /* Ajusta a largura para dois campos por linha em telas pequenas */
+            min-width: 120px; /* Garante que não fique muito pequeno */
+        }
+        
+        /* New styles for PDF button and messages */
+        .pdf-controls {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .pdf-controls button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%; /* Ocupa a largura total em telas pequenas */
+            max-width: 300px; /* Limita a largura em telas maiores */
+        }
+        .pdf-controls button:hover {
+            background-color: #218838;
+        }
+        .pdf-controls #loadingMessage,
+        .pdf-controls #pdfErrorMessage,
+        .pdf-controls #successMessage {
+            margin-top: 15px;
+            font-weight: 600;
+            word-break: break-word; /* Garante que mensagens longas quebrem linha */
+        }
+        .pdf-controls #loadingMessage {
+            color: #007bff;
+        }
+        .pdf-controls #pdfErrorMessage {
+            color: #dc3545;
+        }
+        .pdf-controls #successMessage {
+            color: #28a745;
+        }
+
+        /* Message Box styles */
+        .message-box-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .message-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 90%; /* Ajusta para telas pequenas */
+            box-sizing: border-box;
+        }
+        .message-box p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .message-box button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .message-box button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Logo specific styles */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .logo-container img {
+            max-width: 250px; /* Adjust as needed */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px; /* Reduz o padding do corpo em telas menores */
+            }
+            .container {
+                margin: 10px auto;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            .field-group {
+                grid-template-columns: 1fr; /* Coloca os campos em uma única coluna em telas menores */
+                gap: 15px;
+            }
+            .signature-line {
+                width: 80%; /* Aumenta a largura da linha de assinatura em telas pequenas */
+            }
+            .time-inputs input {
+                width: 100%; /* Ocupa a largura total para cada campo de hora em telas pequenas */
+            }
+            .pdf-controls button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.2em;
+            }
+            h3 {
+                font-size: 1em;
+            }
+            .logo-container img {
+                max-width: 180px; /* Ajusta ainda mais para telas muito pequenas */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Message Box HTML -->
+    <div id="customMessageBoxOverlay" class="message-box-overlay" style="display: none;">
+        <div class="message-box">
+            <p id="customMessageBoxText"></p>
+            <button id="customMessageBoxClose">OK</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Main content wrapper for PDF generation -->
+        <div id="contract-content">
+            <!-- Content is now directly inside, without page wrappers -->
+            <div class="logo-container">
+                <img src="slogan espaço Comemore jpeg.jpg" alt="Logo Buffet Espaço Comemore" onerror="this.onerror=null;this.src='https://placehold.co/250x100/A0A0A0/FFFFFF?text=Logo+Aqui';">
+            </div>
+            <h1>CONTRATO DE PRESTAÇÃO DE SERVIÇO DE ESPAÇO PARA EVENTOS PARTICULARES</h1>
+
+            <div class="section">
+                <h2>CONTRATADO</h2>
+                <div class="field-group">
+                    <div class="field">
+                        <label>NOME:</label>
+                        <div class="read-only-field">LEANDRO RUY BATISTA DA SILVA</div>
+                    </div>
+                    <div class="field">
+                        <label>LOCAL:</label>
+                        <div class="read-only-field">BUFFET ESPAÇO COMEMORE FESTAS E EVENTOS.</div>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="field">
+                        <label>ENDEREÇO:</label>
+                        <div class="read-only-field">RUA ISAURA PARENTE, ESQ., COM A RUA VENEZA, N° 100. (RUA DA PISTA DE TESTE DO DETRAN).</div>
+                    </div>
+                    <div class="field">
+                        <label>CIDADE:</label>
+                        <div class="read-only-field">RIO BRANCO – AC / CEP: 69918-210</div>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="field">
+                        <label>CPF:</label>
+                        <div class="read-only-field">682.459.552-72</div>
+                    </div>
+                    <div class="field">
+                        <label>TELEFONE:</label>
+                        <div class="read-only-field">(68) 9.99217686 / 9.92414341</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>CONTRATANTE</h2>
+                <div class="field-group">
+                    <div class="field">
+                        <label for="contratante_nome">NOME:</label>
+                        <input type="text" id="contratante_nome" name="contratante_nome" placeholder="Nome Completo">
+                    </div>
+                    <div class="field">
+                        <label for="contratante_cpf">CPF:</label>
+                        <input type="text" id="contratante_cpf" name="contratante_cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="___ . ___ . ___ - __">
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="field">
+                        <label for="contratante_telefone">TELEFONE:</label>
+                        <input type="text" id="contratante_telefone" name="contratante_telefone" pattern="\(\d{2}\)\s?\d{4,5}-\d{4}" placeholder="(XX) X.XXXX-XXXX">
+                    </div>
+                    <div class="field">
+                        <label for="motivo_evento">MOTIVO DO EVENTO:</label>
+                        <input type="text" id="motivo_evento" name="motivo_evento" placeholder="Ex: Aniversário, Casamento">
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="field">
+                        <label for="contratante_endereco">ENDEREÇO:</label>
+                        <input type="text" id="contratante_endereco" name="contratante_endereco" placeholder="Rua, Número, Bairro">
+                    </div>
+                    <div class="field">
+                        <label for="obs">OBSERVAÇÕES:</label>
+                        <textarea id="obs" name="obs" placeholder="Observações adicionais..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>OBJETIVO DO CONTRATO E DETALHES DO EVENTO</h2>
+                <p>Prestação de serviço de um ESPAÇO na casa do CONTRATADO com Termo de Consentimento Livre e Esclarecido Pandemia COVID -19 , através da utilização de um espaço para festa particular por tempo limitado conforme especificação abaixo:</p>
+                <div class="field-group">
+                    <div class="field">
+                        <label for="data_utilizacao">DATA DA UTILIZAÇÃO:</label>
+                        <input type="date" id="data_utilizacao" name="data_utilizacao">
+                    </div>
+                    <div class="field">
+                        <label>TIPO DE EVENTO:</label>
+                        <div class="radio-group">
+                            <input type="radio" id="tipo_evento_diurno" name="tipo_evento" value="diurno" checked> <label for="tipo_evento_diurno">Diurno</label>
+                            <input type="radio" id="tipo_evento_noturno" name="tipo_evento" value="noturno"> <label for="tipo_evento_noturno">Noturno</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <div class="field">
+                        <label>HORÁRIO DE UTILIZAÇÃO:</label>
+                        <div class="time-inputs">
+                            <input type="time" id="horario_inicio" name="horario_inicio"> até
+                            <input type="time" id="horario_fim" name="horario_fim">
+                        </div>
+                        <span id="horario_info" class="info-message"></span>
+                        <span id="horario_error" class="error-message"></span>
+                    </div>
+                </div>
+                <div class="info-message">
+                    <p><strong>Horários de Entrega/Decoração:</strong></p>
+                    <ul>
+                        <li>Para eventos diurnos, a entrega de bebidas/decoração pode ser realizada entre 07:00 e 09:00.</li>
+                        <li>Para eventos noturnos, a entrega de bebidas/decoração pode ser realizada entre 14:00 e 15:00.</li>
+                    </ul>
+                </div>
+                <div class="field-group">
+                    <div class="field">
+                        <label>QUANTIDADE DE MESAS INCLUSAS:</label>
+                        <div class="read-only-field">15 (fixas)</div>
+                    </div>
+                    <div class="field">
+                        <label for="mesas_extras">MESAS EXTRAS (R$10 por mesa):</label>
+                        <input type="number" id="mesas_extras" name="mesas_extras" min="0" value="0">
+                        <span id="valor_mesas_extras_display" class="info-message"></span>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <div class="field">
+                        <label>VALOR DO ESPAÇO:</label>
+                        <span id="valor_espaco_display" class="price">R$ 0,00</span>
+                    </div>
+                    <div class="field">
+                        <label>UTILIZAÇÃO DA PISCINA:</label>
+                        <div class="radio-group">
+                            <input type="radio" id="utilizacao_piscina_sim" name="utilizacao_piscina" value="sim"> <label for="utilizacao_piscina_sim">SIM</label>
+                            <input type="radio" id="utilizacao_piscina_nao" name="utilizacao_piscina" value="nao" checked> <label for="utilizacao_piscina_nao">NÃO</label>
+                        </div>
+                        <span id="adicional_piscina_display" class="price"></span>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <div class="field">
+                        <label>ADICIONAR PULA PULA (R$90/diária):</label>
+                        <div class="radio-group">
+                            <input type="radio" id="adicionar_pula_pula_sim" name="adicionar_pula_pula" value="sim"> <label for="adicionar_pula_pula_sim">SIM</label>
+                            <input type="radio" id="adicionar_pula_pula_nao" name="adicionar_pula_pula" value="nao" checked> <label for="adicionar_pula_pula_nao">NÃO</label>
+                        </div>
+                        <span id="valor_pula_pula_display" class="info-message"></span>
+                    </div>
+                    <div class="field">
+                        <label>ADICIONAR PISCINA DE BOLINHA (R$90/diária):</label>
+                        <div class="radio-group">
+                            <input type="radio" id="adicionar_piscina_bolinha_sim" name="adicionar_piscina_bolinha" value="sim"> <label for="adicionar_piscina_bolinha_sim">SIM</label>
+                            <input type="radio" id="adicionar_piscina_bolinha_nao" name="adicionar_piscina_bolinha" value="nao" checked> <label for="adicionar_piscina_bolinha_nao">NÃO</label>
+                        </div>
+                        <span id="valor_piscina_bolinha_display" class="info-message"></span>
+                    </div>
+                </div>
+                
+                <div class="field-group">
+                    <div class="field" style="grid-column: 1 / -1; text-align: right;">
+                        <label>VALOR TOTAL ESTIMADO:</label>
+                        <span id="valor_total_display" class="total-value">R$ 0,00</span>
+                    </div>
+                </div>
+
+                <h3>FORMA DE PAGAMENTO</h3>
+                <div class="field-group">
+                    <div class="field">
+                        <label>ENTRADA (50% do valor total):</label>
+                        <div class="read-only-field">Data: <span id="entrada_data_display"></span> | R$ <span id="entrada_valor_display"></span></div>
+                    </div>
+                    <div class="field">
+                        <label>RESTANTE (50% do valor total - no dia do evento):</label>
+                        <div class="read-only-field">Data: <span id="restante_data_display"></span> | R$ <span id="restante_valor_display"></span></div>
+                    </div>
+                    <div class="field">
+                        <label>À VISTA (100% do valor total - no dia do evento):</label>
+                        <div class="read-only-field">Data: <span id="a_vista_data_display"></span> | R$ <span id="a_vista_valor_display"></span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>ITENS ADICIONAIS AO CONTRATO:</h2>
+                <textarea style="width: calc(100% - 20px);" name="itens_adicionais" placeholder="Descreva aqui quaisquer itens adicionais acordados..."></textarea>
+            </div>
+
+            <div class="section">
+                <h2>FUNCIONAMENTO DO ESPAÇO PARTICULAR:</h2>
+                <p>O Espaço deve ser utilizado no período estabelecido no item "DETALHES DO EVENTO" acima para festa particular na casa do CONTRATADO.</p>
+                <p>O Espaço deve ser utilizado nas horas definidas neste contrato e após este horário deverá entregar-se imediatamente as chaves e controles em perfeito estado ao CONTRATADO ou a pessoa indicada pelo mesmo.</p>
+                <p>O Espaço deve ser utilizado conforme acordado, com a utilização da piscina (<input type="checkbox">) sim ou (<input type="checkbox">) não, cabendo colocar a capa na piscina(<input type="checkbox">) sim ou (<input type="checkbox">) não. Deve-se cumprir o que foi acordado e zelar pelo bom uso do mesmo.</p>
+                <p>- O Espaço deve ser utilizado pelo CONTRATANTE, sendo o espaço individual e intransferível, não podendo o mesmo ser utilizado para festas coletivas por pessoa pagantes.</p>
+                <p>O Espaço deve ser entregue diretamente ao CONTRATANTE, cabendo a este cumprir o horário estabelecido para buscar as chaves do espaço, que se dará na data <input type="date" style="width: auto; display: inline-block;">, às <input type="time" style="width: auto; display: inline-block;"> horas.</p>
+                <h3>O ESPAÇO SERÁ UTILIZADO:</h3>
+                <p>Com a assinatura deste contrato, objeto do presente instrumento, o cliente terá direito ao uso do espaço completo para festas, contendo <span class="read-only-field" style="display: inline-block; padding: 5px 10px;">15</span> mesas, um freezer, fogão industrial, com gás(<input type="checkbox">) ou sem gás (<input type="checkbox">), utilização da piscina (<input type="checkbox">) sim ou (<input type="checkbox">) não, cabendo colocar a capa na piscina (<input type="checkbox">) sim ou (<input type="checkbox">) não.</p>
+                <p>Será permitido ser servido comida e bebida no espaço, não sendo permitido de forma alguma a sua utilização no interior da piscina, e qualquer tipo de fogos auditivos e pirotécnicos no espaço, ou qualquer tipo de fogo que possa causar algum risco às pessoas que estejam no ambiente ou até mesmo danos ao ambiente.</p>
+                <p>Será permitido o uso de decoração, desde que não cause estragos nas paredes e estrutura, devendo ser totalmente retirada no final do evento.</p>
+                <p>Qualquer dano causado deverá ser ressarcido.</p>
+                <p class="disclaimer">O horário de disponibilidade do espaço deverá ser rigorosamente cumprido, nos termos do item "DETALHES DO EVENTO" supra, sendo que em caso de atraso na devolução acarretará na cobrança de multa no valor correspondente 1/3 do valor por hora, não ultrapassando mais de 2 horas de atraso, sob pena de acionamento policial para retirada.</p>
+            </div>
+            <div class="section">
+                <h2>DAS OBRIGAÇÕES DO CONTRATADO:</h2>
+                <p>O CONTRATADO se obriga a ceder o espaço para uso da festa no período estabelecido no item "DETALHES DO EVENTO", todo limpo, com banheiro completo com papel higiênico, papel toalha e sabonete líquido, a piscina limpa, churrasqueira limpa e pias em general limpas, freezer já ligada, e chaves dos ambientes.</p>
+                <p>O CONTRATADO não se responsabiliza nem internamente e externamente, pela segurança do ambiente, sendo de total responsabilidade do CONTRATANTE, sendo que o CONTRATADO, dispõe de segurança do ambiente com valores acordados.</p>
+                <p>O CONTRATADO não se responsabiliza pela guarda das crianças e adolescentes convidados, devendo os mesmos estarem acompanhados dos pais e responsáveis, inclusive ao redor da piscina e ao adentrar na piscina.</p>
+                <p>Fica estabelecido neste instrumento de contrato que o CONTRATADO é somente responsável pela entrega no ambiente limpo ao CONTRATANTE de acordo com os recursos disponíveis no seu estabelecimento.</p>
+            </div>
+            <div class="section">
+                <h2>DAS OBRIGAÇÕES DO CONTRATANTE:</h2>
+                <p>As crianças e adolescentes deverão estar acompanhadas dos pais ou responsáveis, cabendo à CONTRATANTE a guarda e cuidados dos menores.</p>
+                <p>O valor cobrado pelo espaço deverá ser dado uma entrada de 50% no ato da reserva e mais 50% até 5 dias antes do evento, através de moeda corrente nacional.</p>
+                <p>Não será aceito como pagamento o recebimento de cheques à vista ou pós-datado, de acordo com o Art. 5°, II da CF/88.</p>
+                <p>A CONTRATANTE é responsável por orientar os decoradores ou demais fornecedores contratados para não utilizarem grampos, adesivos e colas que danifiquem as paredes, bem como ficará responsável por toda parte interna do espaço: banheiros, pintura, churrasqueira, fogão, piso em general, teto e ou lona decorativa, sob pena de arcarem com os prejuízos causados.</p>
+                <p>É de obrigação do CONTRATANTE estar pontualmente no horário determinado no contrato, para buscar as chaves do espaço, visto que não havendo atrasos e ou retrocessos no horário contratado.</p>
+            </div>
+
+            <div class="section">
+                <h2>CANCELAMENTO OU ALTERAÇÃO DE DATA:</h2>
+                <p>Caso o CONTRATANTE deseje efetuar o cancelamento ou alteração de data, somente poderá ser feito com prazo mínimo de 7 dias antes da data contratada para utilização do espaço, COM PAGAMENTO DE MULTA REFERENTE A 40% DO VALOR CONTRATADO, sendo consultada nova data, se houver disponibilidade e se encaixa no mesmo valor do CONTRATANTE.</p>
+                <p>Se o CONTRATANTE quiser cancelar será devolvido o valor somente de 10% do valor já pago, o restante ficará como título de multa, no prazo de 15 dias após a sua solicitação.</p>
+                <p>Caso a solicitação de cancelamento ou alteração se dê com menos de 7 dias, não caberá restituição dos valores pagos.</p>
+                <p>Qualquer alteração na data ou horário agendado só poderá ser efetuada através da assinatura de um novo contrato.</p>
+                <p>Qualquer alteração nas datas e horários inicialmente acordados está condicionada à disponibilidade de agenda do CONTRATADO.</p>
+            </div>
+            <div class="section">
+                <h2>INFORMAÇÕES GERAIS:</h2>
+                <p>O CONTRATANTE tem a ciência de que o espaço é uma área residencial, cabendo, se alguém procurar o proprietário, informar ao mesmo para ligar no número que se encontra no espaço, que seria a sua fácil localização.</p>
+                <p>O CONTRATANTE deverá ter ciência, e será responsável quanto à utilização de som, que após às 22:00 horas, cabendo ao mesmo se informar sobre a sua utilização e altura adequada após este horário, pois se trata o local de uma área residencial.</p>
+                <p>O CONTRATADO não se responsabiliza por perda ou objetos perdidos ou esquecidos no interior do espaço.</p>
+                <p>O total de pessoas no espaço é de aproximadamente 120 (cento e vinte pessoas), o CONTRATADO não consente com pessoas a mais que este total.</p>
+                <p>Na falta de energia, que compromete a realização do evento, o CONTRATADO não se responsabiliza por isso, pois não é culpa por parte deste CONTRATADO, não sendo ressarcido de maneira nenhuma o dinheiro de volta.</p>
+                <p>Qualquer dano causado ao ambiente, deverá ser ressarcido.</p>
+                <p class="disclaimer">As questões decorrentes deste contrato serão resolvidas mediante entendimentos entre as partes, ficando eleito, para o caso de insucesso, o FORO DA COMARCA DE RIO BRANCO/AC, para dirimi-las.</p>
+                <p class="disclaimer">E por estarem justas e contratadas, as partes firmam o presente instrumento em 02 vias de igual teor e forma, para uma só finalidade.</p>
+                <p>RIO BRANCO, AC <span id="data_contrato_final"></span>.</p>
+            </div>
+
+            <div class="section">
+                <h2>Termo de Consentimento Livre e Esclarecido - Pandemia COVID-19</h2>
+                <p>EU, <input type="text" style="width: 200px; display: inline-block;" id="nome_termo_consentimento" placeholder="Nome Completo">, CPF. <input type="text" style="width: 150px; display: inline-block;" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="___ . ___ . ___ - __" id="cpf_termo_consentimento">. fui devidamente esclarecido(a) pelo PROPRIETARIO, sobre a pandemia de COVID-19, também chamada de novo coronavírus, que estamos vivendo, bem como dos riscos a que estarei exposto em relação a isso.</p>
+                <p>Estou informado e compreendi que durante o período de UTILIZAÇÃO DO ESPAÇO (antes, durante e após utilização) estarei exposto a eventuais contaminações pela COVID-19 por contato com qualquer pessoa portador do novo coronavírus, mesmo que assintomáticos e não sabedores de suas condições, e que isso poderá acarretar o desenvolvimento de sintomas variados com diferentes graus de gravidade.</p>
+                <p>Desta forma, opto por continuar com a UTILIZAÇÃO DO ESPAÇO, uma vez que fui orientado(a) sobre as medidas de precaução e de prevenção, principalmente quanto à utilização de USO DE MÁSCARA, LAVAR AS MÃOS SEMPRE QUE POSSÍVEL, MANTER UMA DISTÂNCIA SEGURA E UTILIZAÇÃO DE ÁLCOOL 70% EM GEL.</p>
+                <p>Assim sendo, DECLARO que fui orientado, pela própria mídia, pelas redes sociais entre outras formas de informação em relação aos cuidados que devo tomar, principalmente quanto à higiene pessoal, alimentação, comportamento social, evitando aglomeração ou com fluxo intenso de pessoas.</p>
+                <p>Ciente dos riscos e benefícios, bem como dirimidas todas as dúvidas, aceito realizar o evento.</p>
+                <p>Rio Branco, <span id="dia_termo_consentimento" style="display: inline-block; width: 40px; text-align: center;"></span> de <span id="mes_termo_consentimento" style="display: inline-block; width: 80px; text-align: center;"></span> de <span id="ano_termo_consentimento" style="display: inline-block; width: 50px; text-align: center;"></span>.</p>
+
+                <div class="signature-area">
+                    <h3 style="margin-top:0;">TERMO DE ACEITE DO CONTRATANTE</h3>
+                    <div class="field-group" style="justify-content: center;">
+                        <div class="field checkbox-group" style="text-align: left; max-width: 600px; margin-bottom: 30px;">
+                            <input type="checkbox" id="agree_terms">
+                            <label for="agree_terms">
+                                Ao marcar esta caixa, eu, o CONTRATANTE, declaro ter lido, compreendido e concordado com todos os termos e condições estabelecidos neste contrato, incluindo o Termo de Consentimento Livre e Esclarecido da Pandemia de COVID-19. Esta marcação serve como minha aceitação e assinatura digital do presente contrato.
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <img src="Assinatura Digital LEANDRO RUY .jpg" alt="Assinatura do Contratado" style="display: block; margin: -35px auto 0; max-height: 100px;" onerror="this.onerror=null;this.src='https://placehold.co/350x100/EFEFEF/333333?text=Assinatura+Indisponível';">
+                    
+                    <div class="signature-line"></div>
+                    <p>CONTRATADO</p>
+                    <p class="disclaimer">Rua Veneza. ESQ. Rua Isaura Parente, 100. (Rua da pista de teste do DETRAN). Fone/Whatsapp: (68) 99921.7686 – espacocomemoreacre@gmail.com</p>
+                </div>
+            </div> 
+        </div> <!-- End contract-content -->
+
+        <!-- Botão para gerar PDF e mensagens de feedback -->
+        <div class="pdf-controls">
+            <button id="gerarPdfBtn">Gerar PDF do Contrato</button>
+            <p id="loadingMessage" style="display: none;">Gerando PDF, por favor aguarde...</p>
+            <p id="pdfErrorMessage" style="display: none;"></p>
+            <p id="successMessage" style="display: none;"></p>
+        </div>
+    </div>
+
+    <!-- Scripts para html2canvas e jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        // Função para exibir caixa de mensagem personalizada
+        function showCustomMessageBox(message) {
+            const overlay = document.getElementById('customMessageBoxOverlay');
+            const messageText = document.getElementById('customMessageBoxText');
+            messageText.textContent = message;
+            overlay.style.display = 'flex'; // Show the overlay
+            document.getElementById('customMessageBoxClose').onclick = function() {
+                overlay.style.display = 'none'; // Hide the overlay on close
+            };
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const dataUtilizacaoInput = document.getElementById('data_utilizacao');
+            const tipoEventoRadios = document.querySelectorAll('input[name="tipo_evento"]');
+            const horarioInicioInput = document.getElementById('horario_inicio');
+            const horarioFimInput = document.getElementById('horario_fim');
+            const horarioInfoSpan = document.getElementById('horario_info');
+            const horarioErrorSpan = document.getElementById('horario_error');
+            const mesasExtrasInput = document.getElementById('mesas_extras');
+            const valorMesasExtrasDisplay = document.getElementById('valor_mesas_extras_display');
+            const valorEspacoDisplay = document.getElementById('valor_espaco_display');
+            const utilizacaoPiscinaSim = document.getElementById('utilizacao_piscina_sim');
+            const utilizacaoPiscinaNao = document.getElementById('utilizacao_piscina_nao');
+            const adicionalPiscinaDisplay = document.getElementById('adicional_piscina_display');
+            const adicionarPulaPulaSim = document.getElementById('adicionar_pula_pula_sim');
+            const adicionarPulaPulaNao = document.getElementById('adicionar_pula_pula_nao');
+            const valorPulaPulaDisplay = document.getElementById('valor_pula_pula_display');
+            const adicionarPiscinaBolinhaSim = document.getElementById('adicionar_piscina_bolinha_sim');
+            const adicionarPiscinaBolinhaNao = document.getElementById('adicionar_piscina_bolinha_nao');
+            const valorPiscinaBolinhaDisplay = document.getElementById('valor_piscina_bolinha_display');
+            const valorTotalDisplay = document.getElementById('valor_total_display');
+            const entradaDataDisplay = document.getElementById('entrada_data_display');
+            const entradaValorDisplay = document.getElementById('entrada_valor_display');
+            const restanteDataDisplay = document.getElementById('restante_data_display');
+            const restanteValorDisplay = document.getElementById('restante_valor_display');
+            const aVistaDataDisplay = document.getElementById('a_vista_data_display');
+            const aVistaValorDisplay = document.getElementById('a_vista_valor_display');
+            const agreeTermsCheckbox = document.getElementById('agree_terms');
+
+            // Termo de Consentimento
+            const nomeTermoConsentimento = document.getElementById('nome_termo_consentimento');
+            const cpfTermoConsentimento = document.getElementById('cpf_termo_consentimento');
+            const diaTermoConsentimento = document.getElementById('dia_termo_consentimento');
+            const mesTermoConsentimento = document.getElementById('mes_termo_consentimento');
+            const anoTermoConsentimento = document.getElementById('ano_termo_consentimento'); 
+
+            // PDF generation elements - Declared once here
+            const gerarPdfBtn = document.getElementById('gerarPdfBtn');
+            const loadingMessage = document.getElementById('loadingMessage');
+            const pdfErrorMessage = document.getElementById('pdfErrorMessage');
+            const successMessage = document.getElementById('successMessage');
+
+            const VALOR_MESA_EXTRA = 10;
+            const VALOR_PULA_PULA = 90;
+            const VALOR_PISCINA_BOLINHA = 90;
+            const VALOR_ADICIONAL_PISCINA_FIXO = 150;
+            const VALOR_HORA_EXTRA_DIURNO = 50;
+
+            const MESES = [
+                "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+                "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+            ];
+
+            function formatCurrency(value) {
+                return `R$ ${value.toFixed(2).replace('.', ',')}`;
+            }
+
+            function formatDate(date) {
+                const d = String(date.getDate()).padStart(2, '0');
+                const m = String(date.getMonth() + 1).padStart(2, '0');
+                const y = date.getFullYear();
+                return `${d}/${m}/${y}`;
+            }
+
+            function timeToMinutes(timeString) {
+                if (!timeString) return null;
+                const [hour, minute] = timeString.split(':').map(Number);
+                return hour * 60 + minute;
+            }
+
+            function updateTimeRestrictions() {
+                const dataUtilizacao = dataUtilizacaoInput.value;
+                const tipoEvento = document.querySelector('input[name="tipo_evento"]:checked').value;
+
+                horarioErrorSpan.textContent = '';
+                horarioInfoSpan.textContent = '';
+
+                if (!dataUtilizacao) {
+                    horarioInicioInput.value = '';
+                    horarioFimInput.value = '';
+                    horarioInicioInput.removeAttribute('min');
+                    horarioInicioInput.removeAttribute('max');
+                    horarioFimInput.removeAttribute('min');
+                    horarioFimInput.removeAttribute('max');
+                    horarioErrorSpan.textContent = 'Por favor, selecione a data para definir os horários disponíveis.';
+                    return;
+                }
+
+                const date = new Date(dataUtilizacao + 'T00:00:00');
+                const diaSemana = date.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+
+                let minTimeStart = '';
+                let maxTimeStart = '';
+                let minTimeEnd = '';
+                let maxTimeEnd = '';
+                let infoMessage = '';
+
+                if (tipoEvento === 'diurno') {
+                    minTimeStart = '09:00';
+                    maxTimeStart = '17:00'; // Cannot start after 17:00 for daytime
+                    minTimeEnd = '09:00';
+                    maxTimeEnd = '22:00'; // Latest possible end time for daytime (with extra cost)
+                    infoMessage = 'Horários permitidos para início: 09:00h até 17:00h. Horário de término pode ir até 22:00h com adicional de R$50/hora após 17:00h.';
+                } else { // Noturno
+                    minTimeStart = '17:00';
+                    maxTimeStart = '23:59'; // Can start up to end of day for nighttime
+
+                    minTimeEnd = '17:00'; // End time generally after 17:00
+                    if (diaSemana >= 1 && diaSemana <= 4) { // Monday to Thursday
+                        maxTimeEnd = '23:59'; // For input type="time", validation for 00:00 next day is in calculateTotal
+                        infoMessage = 'Horários permitidos: 17:00h até 00:00h (do dia seguinte). Som ambiente após 22:00h.';
+                    } else if (diaSemana === 5 || diaSemana === 0) { // Friday or Sunday
+                        maxTimeEnd = '23:59'; // For input type="time", validation for 01:00 next day is in calculateTotal
+                        infoMessage = 'Horários permitidos: 17:00h até 01:00h (do dia seguinte). Som ambiente após 22:00h.';
+                    } else if (diaSemana === 6) { // Saturday
+                        maxTimeEnd = '23:59'; // For input type="time", validation for 02:00 next day is in calculateTotal
+                        infoMessage = 'Horários permitidos: 17:00h até 02:00h (do dia seguinte). Som ambiente após 22:00h.';
+                    }
+                }
+
+                horarioInicioInput.setAttribute('min', minTimeStart);
+                horarioInicioInput.setAttribute('max', maxTimeStart);
+                horarioFimInput.setAttribute('min', minTimeEnd);
+                horarioFimInput.setAttribute('max', maxTimeEnd);
+                horarioInfoSpan.textContent = infoMessage;
+
+                calculateTotal();
+            }
+
+
+            function calculateTotal() {
+                let total = 0;
+                let valorEspaco = 0;
+                let diaSemana = -1;
+                const dataUtilizacao = dataUtilizacaoInput.value;
+                const tipoEvento = document.querySelector('input[name="tipo_evento"]:checked').value;
+
+                if (dataUtilizacao) {
+                    const date = new Date(dataUtilizacao + 'T00:00:00');
+                    diaSemana = date.getDay();
+
+                    if (diaSemana >= 1 && diaSemana <= 4) {
+                        valorEspaco = 400;
+                    } else if (diaSemana === 5 || diaSemana === 0) {
+                        valorEspaco = 450;
+                    } else if (diaSemana === 6) {
+                        valorEspaco = 550;
+                    }
+                }
+                valorEspacoDisplay.textContent = formatCurrency(valorEspaco);
+                total += valorEspaco;
+
+                const mesasExtras = parseInt(mesasExtrasInput.value) || 0;
+                const valorMesasExtras = mesasExtras * VALOR_MESA_EXTRA;
+                valorMesasExtrasDisplay.textContent = mesasExtras > 0 ? `(${formatCurrency(valorMesasExtras)} por ${mesasExtras} mesas extras)` : '';
+                total += valorMesasExtras;
+
+                if (utilizacaoPiscinaSim.checked) {
+                    adicionalPiscinaDisplay.textContent = `(Adicional: ${formatCurrency(VALOR_ADICIONAL_PISCINA_FIXO)})`;
+                    total += VALOR_ADICIONAL_PISCINA_FIXO;
+                } else {
+                    adicionalPiscinaDisplay.textContent = '';
+                }
+
+                if (adicionarPulaPulaSim.checked) {
+                    valorPulaPulaDisplay.textContent = `(Adicional: ${formatCurrency(VALOR_PULA_PULA)})`;
+                    total += VALOR_PULA_PULA;
+                } else {
+                    valorPulaPulaDisplay.textContent = '';
+                }
+
+                if (adicionarPiscinaBolinhaSim.checked) {
+                    valorPiscinaBolinhaDisplay.textContent = `(Adicional: ${formatCurrency(VALOR_PISCINA_BOLINHA)})`;
+                    total += VALOR_PISCINA_BOLINHA;
+                } else {
+                    valorPiscinaBolinhaDisplay.textContent = '';
+                }
+
+                // Handle time validation and additional costs
+                const inicioMin = timeToMinutes(horarioInicioInput.value);
+                const fimMin = timeToMinutes(horarioFimInput.value);
+                horarioErrorSpan.textContent = '';
+                let isValidTime = true;
+
+                if (inicioMin === null || fimMin === null || diaSemana === -1) {
+                    isValidTime = false;
+                } else {
+                    let effectiveFimMin = fimMin;
+                    if (tipoEvento === 'noturno' && fimMin <= inicioMin) {
+                        effectiveFimMin += 24 * 60;
+                    }
+                    
+                    if (tipoEvento === 'diurno') {
+                        const LIMIT_START_DIURNO = timeToMinutes('09:00');
+                        const LIMIT_END_DIURNO_BASE = timeToMinutes('17:00');
+                        const LIMIT_END_DIURNO_MAX_ABS = timeToMinutes('22:00'); 
+
+                        if (inicioMin < LIMIT_START_DIURNO || inicioMin >= LIMIT_END_DIURNO_BASE) {
+                            horarioErrorSpan.textContent = 'ERRO: Para eventos diurnos, o horário de início deve ser entre 09:00h e antes das 17:00h.';
+                            isValidTime = false;
+                        } else if (fimMin < inicioMin || effectiveFimMin > LIMIT_END_DIURNO_MAX_ABS) {
+                            horarioErrorSpan.textContent = 'ERRO: Para eventos diurnos, o horário de término não pode ser anterior ao de início ou ultrapassar 22:00h.';
+                            isValidTime = false;
+                        } else if (effectiveFimMin > LIMIT_END_DIURNO_BASE) {
+                            let extraMinutes = effectiveFimMin - LIMIT_END_DIURNO_BASE;
+                            let extraHours = Math.ceil(extraMinutes / 60);
+                            let additionalCost = extraHours * VALOR_HORA_EXTRA_DIURNO;
+                            total += additionalCost;
+                            horarioInfoSpan.textContent = `Custo adicional de ${formatCurrency(additionalCost)} por extensão de horário (após 17:00h). Limite até 22:00h.`;
+                        } else {
+                            horarioInfoSpan.textContent = 'Horário diurno válido.';
+                        }
+                    } else if (tipoEvento === 'noturno') {
+                        const LIMIT_START_NOTURNO = timeToMinutes('17:00');
+                        let maxAllowedEndTimeMinutes;
+                        let maxAllowedEndTimeString;
+
+                        if (diaSemana >= 1 && diaSemana <= 4) { // Monday to Thursday
+                            maxAllowedEndTimeMinutes = timeToMinutes('00:00') + 24 * 60; 
+                            maxAllowedEndTimeString = '00:00 (do dia seguinte)';
+                        } else if (diaSemana === 5 || diaSemana === 0) { // Friday or Sunday
+                            maxAllowedEndTimeMinutes = timeToMinutes('01:00') + 24 * 60;
+                            maxAllowedEndTimeString = '01:00 (do dia seguinte)';
+                        } else if (diaSemana === 6) { // Saturday
+                            maxAllowedEndTimeMinutes = timeToMinutes('02:00') + 24 * 60;
+                            maxAllowedEndTimeString = '02:00 (do dia seguinte)';
+                        } else {
+                            horarioErrorSpan.textContent = 'ERRO: Data inválida para eventos noturnos.';
+                            isValidTime = false;
+                        }
+
+                        if (isValidTime && (inicioMin < LIMIT_START_NOTURNO || effectiveFimMin > maxAllowedEndTimeMinutes)) {
+                             horarioErrorSpan.textContent = `ERRO: Para eventos noturnos, o horário permitido é de 17:00h até ${maxAllowedEndTimeString}.`;
+                            isValidTime = false;
+                        } else if (isValidTime && effectiveFimMin <= inicioMin) {
+                            horarioErrorSpan.textContent = 'ERRO: O horário de término deve ser posterior ao horário de início.';
+                            isValidTime = false;
+                        } else if(isValidTime) {
+                            horarioInfoSpan.textContent = 'Horário noturno válido. Som ambiente após 22:00h.';
+                        }
+                    }
+                }
+
+                if (!isValidTime) {
+                    total = 0;
+                    valorTotalDisplay.textContent = formatCurrency(0);
+                    updatePaymentDetails(0, dataUtilizacao);
+                    return;
+                }
+
+                valorTotalDisplay.textContent = formatCurrency(total);
+                updatePaymentDetails(total, dataUtilizacao);
+            }
+
+            function updatePaymentDetails(total, eventDateStr) {
+                const entradaValue = (total / 2);
+                const restanteValue = (total / 2);
+                const aVistaValue = total;
+
+                // Get current date for "Hoje"
+                const currentDate = new Date();
+
+                entradaValorDisplay.textContent = formatCurrency(entradaValue);
+                restanteValorDisplay.textContent = formatCurrency(restanteValue);
+                aVistaValorDisplay.textContent = formatCurrency(aVistaValue);
+
+                if (eventDateStr) {
+                    const eventDate = new Date(eventDateStr + 'T00:00:00');
+                    
+                    // Entrada: Today's date
+                    entradaDataDisplay.textContent = formatDate(currentDate);
+
+                    // Restante: 5 days before event date
+                    const restanteDate = new Date(eventDate);
+                    restanteDate.setDate(eventDate.getDate() - 5);
+                    restanteDataDisplay.textContent = formatDate(restanteDate);
+
+                    // À vista: Today's date
+                    aVistaDataDisplay.textContent = formatDate(currentDate);
+
+                    // Update contract final date and consent form date
+                    document.getElementById('data_contrato_final').textContent = formatDate(currentDate);
+                    diaTermoConsentimento.textContent = String(currentDate.getDate()).padStart(2, '0');
+                    mesTermoConsentimento.textContent = MESES[currentDate.getMonth()];
+                    anoTermoConsentimento.textContent = currentDate.getFullYear();
+
+                } else {
+                    entradaDataDisplay.textContent = 'DD/MM/AAAA';
+                    restanteDataDisplay.textContent = 'DD/MM/AAAA';
+                    aVistaDataDisplay.textContent = 'DD/MM/AAAA';
+                    document.getElementById('data_contrato_final').textContent = 'DD/MM/AAAA';
+                    diaTermoConsentimento.textContent = '...';
+                    mesTermoConsentimento.textContent = '...';
+                    anoTermoConsentimento.textContent = '....';
+                }
+            }
+
+
+            // Event Listeners for calculations and restrictions
+            dataUtilizacaoInput.addEventListener('change', function() {
+                updateTimeRestrictions();
+                calculateTotal();
+            });
+            horarioInicioInput.addEventListener('change', calculateTotal);
+            horarioFimInput.addEventListener('change', calculateTotal);
+            mesasExtrasInput.addEventListener('input', calculateTotal);
+
+            tipoEventoRadios.forEach(radio => radio.addEventListener('change', function() {
+                updateTimeRestrictions(); // Update min/max when event type changes
+                calculateTotal();
+            }));
+
+            utilizacaoPiscinaSim.addEventListener('change', calculateTotal);
+            utilizacaoPiscinaNao.addEventListener('change', calculateTotal);
+            adicionarPulaPulaSim.addEventListener('change', calculateTotal);
+            adicionarPulaPulaNao.addEventListener('change', calculateTotal);
+            adicionarPiscinaBolinhaSim.addEventListener('change', calculateTotal);
+            adicionarPiscinaBolinhaNao.addEventListener('change', calculateTotal);
+
+            // Auto-fill for consent form
+            document.getElementById('contratante_cpf').addEventListener('input', function() {
+                cpfTermoConsentimento.value = this.value;
+            });
+            document.getElementById('contratante_nome').addEventListener('input', function() {
+                nomeTermoConsentimento.value = this.value;
+            });
+
+            // Handle PDF generation button click
+            gerarPdfBtn.addEventListener('click', async () => {
+                loadingMessage.style.display = 'block';
+                pdfErrorMessage.style.display = 'none';
+                successMessage.style.display = 'none';
+                gerarPdfBtn.disabled = true;
+
+                const contentToCapture = document.getElementById('contract-content');
+
+                try {
+                    const { jsPDF } = window.jspdf;
+                    const pdf = new jsPDF({
+                        orientation: 'p',
+                        unit: 'pt',
+                        format: 'a4'
+                    });
+
+                    const canvas = await html2canvas(contentToCapture, {
+                        scale: 2, // Higher scale for better quality
+                        useCORS: true,
+                        logging: false,
+                        width: contentToCapture.scrollWidth,
+                        height: contentToCapture.scrollHeight
+                    });
+                    
+                    const imgData = canvas.toDataURL('image/png');
+                    const imgProps = pdf.getImageProperties(imgData);
+                    const pdfWidth = pdf.internal.pageSize.getWidth();
+                    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+                    let heightLeft = pdfHeight;
+                    let position = 0;
+
+                    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                    heightLeft -= pdf.internal.pageSize.getHeight();
+
+                    while (heightLeft > 0) {
+                        position = heightLeft - pdfHeight;
+                        pdf.addPage();
+                        pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight);
+                        heightLeft -= pdf.internal.pageSize.getHeight();
+                    }
+
+                    const dataUtilizacao = dataUtilizacaoInput.value;
+                    let formattedDate = '';
+                    if (dataUtilizacao) {
+                        const dateParts = dataUtilizacao.split('-');
+                        if (dateParts.length === 3) {
+                            formattedDate = `${dateParts[2]}${dateParts[1]}${dateParts[0]}`;
+                        }
+                    }
+
+                    const tipoEvento = document.querySelector('input[name="tipo_evento"]:checked').value.toUpperCase();
+                    let startHour = horarioInicioInput.value ? horarioInicioInput.value.split(':')[0] : '';
+                    let endHour = horarioFimInput.value ? horarioFimInput.value.split(':')[0] : '';
+                    const filename = `${formattedDate}_${tipoEvento}_${startHour}-${endHour}.pdf`;
+
+                    pdf.save(filename);
+
+                    successMessage.textContent = 'PDF gerado e salvo com sucesso!';
+                    successMessage.style.display = 'block';
+                    showCustomMessageBox('Contrato PDF gerado e salvo com sucesso!');
+
+                } catch (error) {
+                    console.error('Erro ao gerar PDF:', error);
+                    pdfErrorMessage.textContent = 'Erro ao gerar o PDF. Por favor, tente novamente. Detalhes: ' + error.message;
+                    pdfErrorMessage.style.display = 'block';
+                    showCustomMessageBox('Erro ao gerar o PDF. Por favor, tente novamente.');
+                } finally {
+                    loadingMessage.style.display = 'none';
+                    gerarPdfBtn.disabled = false;
+                }
+            });
+
+            // Initial setup on page load
+            updateTimeRestrictions(); 
+            calculateTotal();
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrato de Prestação de Serviço - Espaço para Eventos</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 20px; /* Padding padrão */
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura total */
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        h1, h2, h3 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        h1 {
+            font-size: 2.2em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        h2 {
+            font-size: 1.6em;
+            color: #34495e;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+            margin-top: 30px;
+        }
+        h3 {
+            font-size: 1.3em;
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fdfdfd;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
         }
         .section p {
             margin-bottom: 10px;
